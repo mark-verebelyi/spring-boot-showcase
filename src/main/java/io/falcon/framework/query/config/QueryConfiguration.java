@@ -1,6 +1,8 @@
 package io.falcon.framework.query.config;
 
 import io.falcon.framework.query.api.QueryHandler;
+import io.falcon.framework.query.core.DefaultQueryHandlerOperations;
+import io.falcon.framework.query.core.QueryHandlerOperations;
 import io.falcon.framework.query.core.QueryHandlerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -28,6 +30,11 @@ public class QueryConfiguration {
         final QueryHandlerRepository repository = new QueryHandlerRepository();
         handlers.forEach(repository::register);
         return repository;
+    }
+
+    @Bean
+    public QueryHandlerOperations queryHandlerOperations() {
+        return new DefaultQueryHandlerOperations();
     }
 
 }

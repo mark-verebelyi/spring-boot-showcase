@@ -1,7 +1,9 @@
 package io.falcon.framework.command.config;
 
 import io.falcon.framework.command.api.CommandHandler;
+import io.falcon.framework.command.core.CommandHandlerOperations;
 import io.falcon.framework.command.core.CommandHandlerRepository;
+import io.falcon.framework.command.core.DefaultCommandHandlerOperations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -28,6 +30,11 @@ public class CommandConfiguration {
         final CommandHandlerRepository repository = new CommandHandlerRepository();
         handlers.forEach(repository::register);
         return repository;
+    }
+
+    @Bean
+    public CommandHandlerOperations commandHandlerOperations() {
+        return new DefaultCommandHandlerOperations();
     }
 
 

@@ -5,6 +5,7 @@ import io.falcon.application.query.FindGeoLocationByIdQueryResult;
 import io.falcon.domain.model.GeoLocation;
 import io.falcon.domain.model.GeoLocationRepository;
 import io.falcon.framework.query.core.ApplicationQueryHandler;
+import io.falcon.framework.query.core.QueryHandlerOperations;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import static com.google.common.base.Preconditions.checkArgument;
@@ -17,7 +18,8 @@ public final class FindGeoLocationByIdQueryHandler extends ApplicationQueryHandl
     private GeoLocationRepository geoLocationRepository;
 
     @Autowired
-    public FindGeoLocationByIdQueryHandler(GeoLocationRepository geoLocationRepository) {
+    public FindGeoLocationByIdQueryHandler(QueryHandlerOperations queryHandlerOperations, GeoLocationRepository geoLocationRepository) {
+        super(queryHandlerOperations);
         checkArgument(geoLocationRepository != null, "geoLocationRepository can not be null");
         this.geoLocationRepository = geoLocationRepository;
     }
