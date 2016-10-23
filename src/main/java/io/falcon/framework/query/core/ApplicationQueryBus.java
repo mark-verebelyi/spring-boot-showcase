@@ -1,6 +1,6 @@
-package io.falcon.framework.cqrs.core;
+package io.falcon.framework.query.core;
 
-import io.falcon.framework.cqrs.api.*;
+import io.falcon.framework.query.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

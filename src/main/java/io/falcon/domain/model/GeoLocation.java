@@ -1,4 +1,4 @@
-package io.falcon.domain;
+package io.falcon.domain.model;
 
 import org.springframework.data.annotation.PersistenceConstructor;
 

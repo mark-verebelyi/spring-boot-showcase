@@ -1,9 +1,9 @@
-package io.falcon.framework.cqrs.core;
+package io.falcon.framework.command.core;
 
-import io.falcon.framework.cqrs.api.Command;
-import io.falcon.framework.cqrs.api.CommandBus;
-import io.falcon.framework.cqrs.api.CommandHandler;
-import io.falcon.framework.cqrs.api.CommandHandlerProvider;
+import io.falcon.framework.command.api.Command;
+import io.falcon.framework.command.api.CommandBus;
+import io.falcon.framework.command.api.CommandHandler;
+import io.falcon.framework.command.api.CommandHandlerProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

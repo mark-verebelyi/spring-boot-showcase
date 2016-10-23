@@ -1,4 +1,4 @@
-package io.falcon.framework.cqrs.api;
+package io.falcon.framework.query.api;
 
 import java.util.Optional;
 

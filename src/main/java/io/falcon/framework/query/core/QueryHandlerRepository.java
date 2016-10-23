@@ -1,6 +1,6 @@
-package io.falcon.framework.cqrs.core;
+package io.falcon.framework.query.core;
 
-import io.falcon.framework.cqrs.api.*;
+import io.falcon.framework.query.api.*;
 
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
