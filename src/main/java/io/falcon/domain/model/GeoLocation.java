@@ -1,11 +1,12 @@
 package io.falcon.domain.model;
 
-import org.springframework.data.annotation.PersistenceConstructor;
+import io.falcon.application.query.GeoLocationView;
+import io.falcon.framework.domain.api.Aggregate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.Objects;
 
 import static com.google.common.base.Preconditions.checkArgument;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
@@ -15,21 +16,36 @@ import static org.apache.commons.lang3.StringUtils.isNotBlank;
  */
 @Entity
 @Table(name = "GEO_LOCATION")
-public class GeoLocation {
-
-    @Id
-    @Column(name = "ID")
-    private String id;
+public class GeoLocation extends Aggregate {
 
     @Column(name = "LABEL", length = 200)
     private String label;
 
-    @PersistenceConstructor
-    public GeoLocation(String id, String label) {
-        checkArgument(isNotBlank(id), "id can not be blank");
+    @Deprecated
+    protected GeoLocation() {
+    }
+
+    public GeoLocation(String key, String label) {
+        super(key);
         checkArgument(isNotBlank(label), "label can not be blank");
-        this.id = id;
         this.label = label;
     }
+
+    public void changeLabel(final String label) {
+        checkArgument(isNotBlank(label), "label can not be blank");
+        if (Objects.equals(this.label, label)) {
+            return;
+        }
+        this.label = label;
+    }
+
+    public GeoLocationView asGeoLocationView() {
+        final GeoLocationView view = new GeoLocationView();
+        view.setKey(key());
+        view.setLabel(label);
+        return view;
+    }
+
+
 
 }
